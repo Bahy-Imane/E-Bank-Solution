@@ -30,7 +30,6 @@ public class Beneficiary {
     @OneToMany(mappedBy = "beneficiary", fetch = FetchType.EAGER)
     private List<Transaction> transactions = new ArrayList<>();
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id")
     private Account account;
