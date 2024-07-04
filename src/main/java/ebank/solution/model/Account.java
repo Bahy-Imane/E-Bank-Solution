@@ -1,5 +1,6 @@
 package ebank.solution.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,6 +29,12 @@ public class Account {
     @Column(nullable = false)
     private Date createdDate;
 
+    @Column(nullable = false)
+    private Boolean isActive;
+
+    @Column(nullable = false)
+    private String blockRaison;
+
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private List<Card> cards = new ArrayList<>();
 
@@ -38,6 +45,7 @@ public class Account {
     private List<Transaction> transactions = new ArrayList<>();
 
     @ManyToOne
+    @JsonIgnore
     private User user;
 
 }

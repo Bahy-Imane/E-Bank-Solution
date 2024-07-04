@@ -8,7 +8,7 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/ebank")
+@RequestMapping("/api/user")
 public class UserController {
 
     private final UserService userService;
@@ -25,5 +25,15 @@ public class UserController {
     @PostMapping
     public User addUser(@RequestBody User user) {
         return userService.addUser(user);
+    }
+
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody User user) {
+        return userService.updateUser(id,user);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
     }
 }

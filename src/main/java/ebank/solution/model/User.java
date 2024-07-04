@@ -1,4 +1,5 @@
 package ebank.solution.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
