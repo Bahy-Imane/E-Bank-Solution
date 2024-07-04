@@ -24,9 +24,6 @@ public class Beneficiary {
     @Column(nullable = false)
     private Double benefAccNumber;
 
-    @Column(nullable = false)
-    private Date createdDate;
-
     @OneToMany(mappedBy = "beneficiary", fetch = FetchType.EAGER)
     private List<Transaction> transactions = new ArrayList<>();
 

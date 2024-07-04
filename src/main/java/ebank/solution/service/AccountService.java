@@ -19,7 +19,7 @@ public class AccountService {
 
 
     public List<Account> getAccounts(Long userId) {
-        return accountRepository.findAccountByAccountId(userId);
+        return accountRepository.findAccountByUserUserId(userId);
     }
 
     public Account addAccount(Long userId, Account account) {

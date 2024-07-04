@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
     @Query(value = "select * from account where user_user_id = ?", nativeQuery = true)
-    List<Account> findAccountByAccountId (Long userId);
+    List<Account> findAccountByUserUserId (Long userId);
 }
