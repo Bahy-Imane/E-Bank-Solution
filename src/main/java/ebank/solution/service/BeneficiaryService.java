@@ -31,7 +31,8 @@ public class BeneficiaryService {
 
     public Beneficiary updateBenifiary(Long beneficiaryId,Beneficiary beneficiary) {
         Beneficiary beneficiary1=beneficiaryRepository.findById(beneficiaryId).get();
-        beneficiary1.setBenefName(beneficiary.getBenefName());
+        beneficiary1.setBenefNAme(beneficiary.getBenefNAme());
+        beneficiary1.setAccountType(beneficiary.getAccountType());
         beneficiary1.setBenefAccNumber(beneficiary.getBenefAccNumber());
         beneficiary1.setAccount(beneficiary.getAccount());
         return beneficiaryRepository.save(beneficiary1);

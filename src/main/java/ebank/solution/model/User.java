@@ -28,5 +28,7 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Account> accounts = new ArrayList<>();
+
 }

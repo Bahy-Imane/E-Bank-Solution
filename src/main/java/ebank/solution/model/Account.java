@@ -36,12 +36,15 @@ public class Account {
     private String blockRaison;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Card> cards = new ArrayList<>();
 
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Beneficiary> beneficiaries = new ArrayList<>();
 
     @OneToMany(mappedBy = "account",fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Transaction> transactions = new ArrayList<>();
 
     @ManyToOne

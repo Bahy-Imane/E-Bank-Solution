@@ -23,17 +23,17 @@ public class BeneficiaryController {
     }
 
     @PostMapping("/{accountId}")
-    public Beneficiary addBeneficairy(@PathVariable Long accountId,Beneficiary beneficiary){
+    public Beneficiary addBeneficairy(@PathVariable Long accountId, @RequestBody  Beneficiary beneficiary){
         return beneficiaryService.addBeneficiary(accountId,beneficiary);
     }
 
-    @PutMapping("/benefId")
-    public Beneficiary updateBenef(@PathVariable Long benefId,Beneficiary beneficiary){
+    @PutMapping("/{benefId}")
+    public Beneficiary updateBenef(@PathVariable Long benefId, @RequestBody  Beneficiary beneficiary){
         return beneficiaryService.updateBenifiary(benefId,beneficiary);
     }
 
-    @DeleteMapping("/benefId")
-    public void deleteBenefeciary (Long benefId){
+    @DeleteMapping("/{benefId}")
+    public void deleteBenefeciary (@PathVariable Long benefId){
         beneficiaryService.deleteBeneficiary(benefId);
     }
 }

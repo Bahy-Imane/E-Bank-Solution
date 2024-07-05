@@ -31,12 +31,12 @@ public class AccountService {
 
     public void closeAccount(Long accountId, String reason) {
         Account account = accountRepository.findById(accountId).orElse(null);
-        if (account != null) {
+        if (account.getBalance() == 0) {
             account.setBlockRaison(reason);
             account.setIsActive(false);
             accountRepository.save(account);
         } else {
-            throw new RuntimeException("Account not found");
+            throw new RuntimeException("you have to Withdraw all your money");
         }
     }
 }
