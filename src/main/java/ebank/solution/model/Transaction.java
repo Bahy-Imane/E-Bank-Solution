@@ -1,6 +1,8 @@
 package ebank.solution.model;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 
@@ -27,14 +29,17 @@ public class Transaction {
     private String transType;
 
     @Column(name = "trans_date")
-    private LocalDateTime transDateTime;
+    private Date transDateTime;
+
+    @Column(name = "target")
+    private Long target;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "account_id")
+    @JoinColumn(name = "account_num")
     private Account account;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "beneficiary_id")
+    @JoinColumn(name = "benef_acc_number")
     private Beneficiary beneficiary;
 
 }

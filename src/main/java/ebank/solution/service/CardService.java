@@ -38,9 +38,11 @@ public class CardService {
         Card card = cardRepository.findById(cardId).get();
         card.setIsActive(false);
         if (card.getBlockReason() == null || card.getBlockReason().isEmpty()) {
-            card.setBlockReason(blockReason);
-            card.setIsBlocked(true);
+            throw new IllegalStateException("Block reason is empty");
         }
+        card.setBlockReason(blockReason);
+        card.setIsBlocked(true);
+
         return cardRepository.save(card);
     }
 

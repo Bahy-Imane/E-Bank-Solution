@@ -28,6 +28,7 @@ public class Beneficiary {
     @Column(nullable = false)
     private Double benefAccNumber;
 
+
     @OneToMany(mappedBy = "beneficiary", fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Transaction> transactions = new ArrayList<>();

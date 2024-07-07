@@ -22,6 +22,7 @@ public class AccountService {
         return accountRepository.findAccountByUserUserId(userId);
     }
 
+
     public Account addAccount(Long userId, Account account) {
         User user = userRepository.findById(userId).orElse(null);
             account.setUser(user);
@@ -39,4 +40,9 @@ public class AccountService {
             throw new RuntimeException("you have to Withdraw all your money");
         }
     }
+
+    public Account findAccountByAccountNum(Long accNumber){
+        return (Account) accountRepository.findAccountByAccNumber(accNumber);
+    }
+
 }

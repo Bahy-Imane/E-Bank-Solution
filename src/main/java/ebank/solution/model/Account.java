@@ -23,6 +23,9 @@ public class Account {
     @Column(name = "account_type")
     private String accountType;
 
+    @Column(name = "acc_number")
+    private Long accNumber;
+
     @Column(nullable = false)
     private Double balance;
 

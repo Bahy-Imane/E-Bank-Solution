@@ -1,15 +1,12 @@
 package ebank.solution.service;
-
 import ebank.solution.model.Account;
 import ebank.solution.model.Beneficiary;
-import ebank.solution.model.User;
 import ebank.solution.repository.AccountRepository;
 import ebank.solution.repository.BeneficiaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class BeneficiaryService {

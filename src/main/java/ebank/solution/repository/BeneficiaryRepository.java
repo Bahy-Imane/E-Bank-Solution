@@ -12,4 +12,8 @@ import java.util.List;
 public interface BeneficiaryRepository extends JpaRepository<Beneficiary, Long> {
     @Query(value = "select * from beneficiary where account_id = ?", nativeQuery = true)
     List<Beneficiary> findBeneficiariesByAccount_AccountId(Long accountId);
+
+    @Query(value = "select * from benefeciary where benef_acc_number=?",nativeQuery = true)
+    Beneficiary findByAccountNumber(Long accountNumber);
+
 }
