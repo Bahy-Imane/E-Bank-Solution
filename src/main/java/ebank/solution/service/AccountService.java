@@ -42,7 +42,7 @@ public class AccountService {
     }
 
     public Account findAccountByAccountNum(Long accNumber){
-        return (Account) accountRepository.findAccountByAccNumber(accNumber);
+        return accountRepository.findAccountByAccNumber(accNumber);
     }
 
 }
