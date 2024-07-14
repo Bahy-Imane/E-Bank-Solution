@@ -55,11 +55,11 @@ public class SecurityConfig {
         return NimbusJwtDecoder.withSecretKey(secretKey).macAlgorithm(MacAlgorithm.HS256).build();
     }
 
-//    @Bean
-//    public AuthenticationManager authenticationManager(UserService userService) {
-//        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-//        daoAuthenticationProvider.setUserDetailsService(userService);
-//        daoAuthenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder());
-//        return new ProviderManager(daoAuthenticationProvider);
-//    }
+    @Bean
+    public AuthenticationManager authenticationManager(UserService userService) {
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setUserDetailsService(userService);
+        daoAuthenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder());
+        return new ProviderManager(daoAuthenticationProvider);
+    }
 }
