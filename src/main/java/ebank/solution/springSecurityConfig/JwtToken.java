@@ -101,42 +101,42 @@ public class JwtToken {
         }
         return ResponseEntity.badRequest().body("Error");
     }
-//
-//
-//
-//
-//    @PostMapping("/login")
-//    public ResponseEntity<Object> login(@Valid @RequestBody LoginDto loginDto, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            var errorsList = bindingResult.getAllErrors();
-//            var errorsMap = new HashMap<String, String>();
-//
-//
-//            for (int i = 0; i < errorsList.size(); i++) {
-//                var error = (FieldError) errorsList.get(i);
-//                errorsMap.put(error.getField(), error.getDefaultMessage());
-//            }
-//            return ResponseEntity.badRequest().body(errorsMap);
-//        }
-//        try {
-//            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUserName(), loginDto.getPassword()));
-//
-//            User user = userRepository.findUsersByUserName(loginDto.getUserName());
-//            String jwtToken = createJwtToken(user);
-//
-//            var response = new HashMap<String, Object>();
-//            response.put("token", jwtToken);
-//            response.put("user",user);
-//            return ResponseEntity.ok(response);
-//
-//        }
-//        catch (Exception e) {
-//            System.out.println("There is a problem occured while Loging user");
-//            e.printStackTrace();
-//        }
-//        return ResponseEntity.badRequest().body("Bad username or password");
-//
-//    }
+
+
+
+
+    @PostMapping("/login")
+    public ResponseEntity<Object> login(@Valid @RequestBody LoginDto loginDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            var errorsList = bindingResult.getAllErrors();
+            var errorsMap = new HashMap<String, String>();
+
+
+            for (int i = 0; i < errorsList.size(); i++) {
+                var error = (FieldError) errorsList.get(i);
+                errorsMap.put(error.getField(), error.getDefaultMessage());
+            }
+            return ResponseEntity.badRequest().body(errorsMap);
+        }
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUserName(), loginDto.getPassword()));
+
+            User user = userRepository.findUsersByUserName(loginDto.getUserName());
+            String jwtToken = createJwtToken(user);
+
+            var response = new HashMap<String, Object>();
+            response.put("token", jwtToken);
+            response.put("user",user);
+            return ResponseEntity.ok(response);
+
+        }
+        catch (Exception e) {
+            System.out.println("There is a problem occured while Loging user");
+            e.printStackTrace();
+        }
+        return ResponseEntity.badRequest().body("Bad username or password");
+
+    }
 
 
 
