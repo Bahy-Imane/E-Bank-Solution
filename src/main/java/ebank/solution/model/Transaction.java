@@ -35,7 +35,7 @@ public class Transaction {
     private Long target;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "account_num")
+    @JoinColumn(name = "account_id")
     private Account account;
 
     @ManyToOne(fetch = FetchType.EAGER)

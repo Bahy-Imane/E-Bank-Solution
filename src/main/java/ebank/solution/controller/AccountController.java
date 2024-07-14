@@ -30,7 +30,7 @@ public class AccountController {
 
 
     @PutMapping("/{accountId}/{reason}")
-    public void closeAccount(@PathVariable Long accountId, @PathVariable String reason) {
+    public void closeAccount(@PathVariable Long accountId,@PathVariable String reason) {
         accountService.closeAccount(accountId, reason);
     }
 

@@ -11,4 +11,6 @@ import java.util.List;
 public interface CardRepository extends JpaRepository<Card, Long> {
     @Query(value = "select * from card where account_id=?", nativeQuery = true)
     public List<Card> findCardsByAccount_AccountId(Long accountId);
+
+
 }

@@ -57,9 +57,9 @@ public class TransactionService {
 
     }
 
-    public void transactionToExternAcc(Long accountId,Long toAcc, Double amount, String description) {
+    public void transactionToExternAcc(Long accountId,Long benefAccNumber, Double amount, String description) {
         Account acc1 =accountRepository.findById(accountId).orElse(null);
-        Beneficiary benef =beneficiaryRepository.findByAccountNumber(toAcc);
+        Beneficiary benef =beneficiaryRepository.findByAccountNumber(benefAccNumber);
 
 
         if (acc1.getBalance()<amount) {

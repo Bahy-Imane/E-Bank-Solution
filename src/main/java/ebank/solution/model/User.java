@@ -1,10 +1,6 @@
 package ebank.solution.model;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @NoArgsConstructor
@@ -18,17 +14,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @Column(name = "user_name")
+    @Column(unique = true, nullable = false)
     private String userName;
+
+    @Column(name = "psswd")
+    private  String password;
 
     @Column(name = "adress")
     private String address;
 
-    @Column(name = "email")
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<Account> accounts = new ArrayList<>();
+//    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+//    @JsonIgnore
+//    private List<Account> accounts = new ArrayList<>();
 
 }

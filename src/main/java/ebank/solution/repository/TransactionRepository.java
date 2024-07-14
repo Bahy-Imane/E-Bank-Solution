@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
-    @Query(value = "select * from  transaction where account_num=?",nativeQuery = true)
+    @Query(value = "select * from  transaction where account_id=?",nativeQuery = true)
     List<Transaction> findAccountByAccNumber(Long accNumber);
 
 }

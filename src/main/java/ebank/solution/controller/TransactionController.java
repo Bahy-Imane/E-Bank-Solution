@@ -22,13 +22,20 @@ public class TransactionController {
     }
 
 
-    @PostMapping("/interne/{accountId}/{toAcc}/{amount}/{description}")
-    public void makeinterneTransaction(@PathVariable Long accountId,@PathVariable Long toAcc,@PathVariable Double amount,@PathVariable String description) {
-         transactionService.transactionToInternAcc(accountId,toAcc,amount,description);
+    @PostMapping("/interne/{accountId}")
+    public void makeInterneTransaction(@PathVariable Long accountId,
+                                       @RequestParam Long toAcc,
+                                       @RequestParam Double amount,
+                                       @RequestParam String description) {
+        transactionService.transactionToInternAcc(accountId, toAcc, amount, description);
     }
 
+
     @PostMapping("/externe/{accountId}/{toAcc}/{amount}/{description}")
-    public void makeExterneTransaction(@PathVariable Long accountId,@PathVariable Long toAcc,@PathVariable Double amount,@PathVariable String description) {
-        transactionService.transactionToExternAcc(accountId,toAcc,amount,description);
+    public void makeExterneTransaction(@PathVariable Long accountId,
+                                       @RequestParam Long benefAccNumber,
+                                       @RequestParam Double amount,
+                                       @RequestParam String description) {
+        transactionService.transactionToExternAcc(accountId,benefAccNumber,amount,description);
     }
 }

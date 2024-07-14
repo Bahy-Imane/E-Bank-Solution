@@ -24,14 +24,18 @@ public class CardController {
         return cardService.addCard(accountId, card);
     }
 
-    @PutMapping("/{cardId}")
-    public Card updateCard(@PathVariable Long cardId, @RequestBody Card card) {
-        return cardService.isActivatedCard(cardId, card);
+    @PutMapping("/activate/{cardId}")
+    public Card activateCard(@PathVariable Long cardId) {
+        return cardService.activatedCard(cardId);
     }
 
+    @PutMapping("/deactivate/{cardId}")
+    public Card deactivateCard(@PathVariable Long cardId) {
+        return cardService.deactivatedCard(cardId);
+    }
 
-    @PutMapping("/{cardId}/{blockReason}")
-    public Card updateCard(@PathVariable Long cardId, @PathVariable String blockReason) {
+    @PutMapping("/{cardId}")
+    public Card updateCard(@PathVariable Long cardId, @RequestParam String blockReason) {
         return cardService.blockCard(cardId,blockReason);
     }
 }

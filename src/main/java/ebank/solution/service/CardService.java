@@ -27,9 +27,15 @@ public class CardService {
     }
 
 
-    public Card isActivatedCard(Long cardId,Card card) {
+    public Card activatedCard(Long cardId) {
         Card card1 = cardRepository.findById(cardId).get();
         card1.setIsActive(false);
+        return cardRepository.save(card1);
+    }
+
+    public Card deactivatedCard(Long cardId) {
+        Card card1 = cardRepository.findById(cardId).get();
+        card1.setIsActive(true);
         return cardRepository.save(card1);
     }
 
