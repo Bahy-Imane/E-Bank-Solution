@@ -36,11 +36,11 @@ public class JwtToken {
     @Value("${security.jwt.issuer}")
     private String jwtIssuer;
 
-//    @Autowired
-//    private UserRepository userRepository;
-//
-//    @Autowired
-//    private AuthenticationManager authenticationManager;
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
 //
 ////    @GetMapping("/profile")
@@ -56,51 +56,51 @@ public class JwtToken {
 ////    }
 //
 //
-//    @PostMapping("/register")
-//    public ResponseEntity<Object> register(@Valid @RequestBody RegisterDto registerDto, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            var errorsList = bindingResult.getAllErrors();
-//            var errorsMap = new HashMap<String, String>();
-//
-//
-//            for (int i = 0; i < errorsList.size(); i++) {
-//                var error = (FieldError) errorsList.get(i);
-//                errorsMap.put(error.getField(), error.getDefaultMessage());
-//            }
-//            return ResponseEntity.badRequest().body(errorsMap);
-//        }
-//
-//        var bCryptEncoder =new BCryptPasswordEncoder();
-//        User user = new User();
-//        user.setUserName(registerDto.getUserName());
-//        user.setEmail(registerDto.getEmail());
-//        user.setAddress(registerDto.getAddress());
-//        user.setPassword(bCryptEncoder.encode(registerDto.getPassword()));
-//
-//        try {
-//                var otherUser = userRepository.findUsersByUserName(registerDto.getUserName());
-//                if (otherUser != null){
-//                    return ResponseEntity.badRequest().body("Username already exists");
-//        }
-//                otherUser = userRepository.findUsersByEmail(registerDto.getEmail());
-//                if (otherUser != null){
-//                    return ResponseEntity.badRequest().body("Email already exists");
-//                }
-//                userRepository.save(user);
-//
-//
-//                String jwtToken = createJwtToken(user);
-//                var response = new HashMap<String, Object>();
-//                response.put("token", jwtToken);
-//                response.put("user",user);
-//                return ResponseEntity.ok(response);
-//        }
-//        catch (Exception e) {
-//            System.out.println("There is a problem occured while saving user");
-//            e.printStackTrace();
-//        }
-//        return ResponseEntity.badRequest().body("Error");
-//    }
+    @PostMapping("/register")
+    public ResponseEntity<Object> register(@Valid @RequestBody RegisterDto registerDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            var errorsList = bindingResult.getAllErrors();
+            var errorsMap = new HashMap<String, String>();
+
+
+            for (int i = 0; i < errorsList.size(); i++) {
+                var error = (FieldError) errorsList.get(i);
+                errorsMap.put(error.getField(), error.getDefaultMessage());
+            }
+            return ResponseEntity.badRequest().body(errorsMap);
+        }
+
+        var bCryptEncoder =new BCryptPasswordEncoder();
+        User user = new User();
+        user.setUserName(registerDto.getUserName());
+        user.setEmail(registerDto.getEmail());
+        user.setAddress(registerDto.getAddress());
+        user.setPassword(bCryptEncoder.encode(registerDto.getPassword()));
+
+        try {
+                var otherUser = userRepository.findUsersByUserName(registerDto.getUserName());
+                if (otherUser != null){
+                    return ResponseEntity.badRequest().body("Username already exists");
+        }
+                otherUser = userRepository.findUsersByEmail(registerDto.getEmail());
+                if (otherUser != null){
+                    return ResponseEntity.badRequest().body("Email already exists");
+                }
+                userRepository.save(user);
+
+
+                String jwtToken = createJwtToken(user);
+                var response = new HashMap<String, Object>();
+                response.put("token", jwtToken);
+                response.put("user",user);
+                return ResponseEntity.ok(response);
+        }
+        catch (Exception e) {
+            System.out.println("There is a problem occured while saving user");
+            e.printStackTrace();
+        }
+        return ResponseEntity.badRequest().body("Error");
+    }
 //
 //
 //
