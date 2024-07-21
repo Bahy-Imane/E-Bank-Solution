@@ -1,0 +1,12 @@
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+  <label for="userName">Username:</label>
+  <input id="userName" formControlName="userName">
+  <label for="email">Email:</label>
+  <input id="email" type="email" formControlName="email">
+  <label for="address">Address:</label>
+  <input id="address" formControlName="address">
+  <label for="password">Password:</label>
+  <input id="password" type="password" formControlName="password">
+  <button type="submit">Register</button>
+</form>
+<router-outlet />
